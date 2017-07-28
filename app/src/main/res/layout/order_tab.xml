@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ListView
+        android:id="@+id/id_view_orderlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/id_button_neworder"
+        android:layout_weight="1.09" />
+
+    <Button
+        android:id="@+id/id_button_neworder"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/button_neworder"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bk_grey"
+    android:orientation="vertical">
+
+    <include layout="@layout/top"
+        android:id="@+id/include" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="73dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_below="@+id/include"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.19"
+        android:fontFamily="monospace"
+        android:text="@string/About"
+        android:textAlignment="center"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="24sp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp" />
+
+</RelativeLayout>

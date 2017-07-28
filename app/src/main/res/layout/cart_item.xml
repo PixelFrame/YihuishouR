@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <CheckBox
+        android:id="@+id/id_cb_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true" />
+
+    <ImageView
+        android:id="@+id/id_iv_itemimage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@mipmap/cart_unpressed"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/id_cb_select"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/id_tv_itemname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_name"
+        android:textSize="24sp"
+        android:layout_marginStart="25dp"
+        android:layout_above="@+id/id_cb_select"
+        android:layout_toEndOf="@+id/id_iv_itemimage" />
+
+    <TextView
+        android:id="@+id/id_tv_itemprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:layout_below="@+id/id_tv_itemname"
+        android:layout_alignStart="@+id/id_tv_itemname" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/id_tv_itemprice"
+        android:layout_toEndOf="@+id/id_iv_itemimage"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/id_tv_itemprice">
+
+        <Button
+            android:id="@+id/id_button_minus"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/minus"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/id_edit_num"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/id_button_plus"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/plus"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</RelativeLayout>

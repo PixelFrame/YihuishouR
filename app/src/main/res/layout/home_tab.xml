@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/banner"
+        android:layout_width="match_parent"
+        android:layout_height="210dp" />
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.edu.seu.srtp.prjyi.yihuishour.util.MyGridView
+        android:id="@+id/id_view_gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="0.0dip"
+        android:listSelector="@null"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0.0dip"/>
+
+    </ScrollView>
+
+
+</LinearLayout>

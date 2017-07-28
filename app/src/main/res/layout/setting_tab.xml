@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/bk_grey"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/id_iv_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@mipmap/setting_unpressed"
+            android:contentDescription="@string/avatar" />
+
+        <TextView
+            android:id="@+id/id_tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/id_iv_avatar"
+            android:text="@string/username"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/id_tv_userinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/id_tv_username"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/id_tv_username"
+            android:text="@string/userinfo"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/id_tv_userlv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/id_tv_userinfo"
+            android:layout_alignBottom="@+id/id_tv_userinfo"
+            android:layout_marginStart="9dp"
+            android:layout_toEndOf="@+id/id_tv_userinfo"
+            android:text="@string/userlv"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/id_ib_edituser"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/id_view_setlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

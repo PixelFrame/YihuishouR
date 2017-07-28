@@ -1,0 +1,10 @@
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

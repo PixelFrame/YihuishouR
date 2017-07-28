@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/id_tv_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/id_tv_sumcalc"
+            android:layout_alignBottom="@+id/id_tv_sumcalc"
+            android:layout_centerHorizontal="true"
+            android:text="@string/sum_price" />
+
+        <TextView
+            android:id="@+id/id_tv_sumcalc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/id_tv_sum"
+            android:text="0.00"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="36sp" />
+
+        <CheckBox
+            android:id="@+id/id_cb_selectall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/checkbox_selectall" />
+
+        <Button
+            android:id="@+id/id_button_settle"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_settle"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/id_view_cartlsit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bk_grey" />
+
+</LinearLayout>

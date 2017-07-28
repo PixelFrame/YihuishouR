@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Copyright (c) 2017. All Rights Reserved.
+  ~
+  ~ To use contact by e-mail: pm421@live.com.
+  -->
+
+<resources>
+    <color name="colorPrimary">#b7e486</color>
+    <color name="colorPrimaryDark">#96cc6b</color>
+    <color name="colorAccent">#8de9bc</color>
+    <color name="white">#ffffff</color>
+    <color name="griditems_bg">#ffe8ecef</color>
+    <color name="line">#ffd3dde6</color>
+    <color name="text">#000000</color>
+    <color name="bk_grey">#F1F1F1</color>
+</resources>
