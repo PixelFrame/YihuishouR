@@ -7,6 +7,7 @@
 
 package cn.edu.seu.srtp.prjyi.yihuishour;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
     private AMapLocationClient mLocationClient;
     private TextView mLocationErrText;
     private MarkerOptions markerOption = new MarkerOptions();
-    private LatLng SEU_latLng = new LatLng(31.8873130000,118.8208370000);
+    private LatLng defaultLatLng = new LatLng(31.8873130000,118.8208370000);
     private CameraUpdate mCameraReset = CameraUpdateFactory.zoomTo(17);
 
     @Override
@@ -64,7 +65,12 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
         aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
         aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
 
-        markerOption.position(SEU_latLng);
+        Intent it = getIntent();
+        double lat = it.getDoubleExtra("Latitude", 0);
+        double lon = it.getDoubleExtra("Longitude",0);
+        defaultLatLng = new LatLng(lat, lon);
+
+        markerOption.position(defaultLatLng);
         markerOption.title("FAKE_RECYCLE_POINT").snippet("此处为测试用伪标记点");
         markerOption.draggable(false);//设置Marker可拖动
         // 将Marker设置为贴地显示，可以双指下拉地图查看效果

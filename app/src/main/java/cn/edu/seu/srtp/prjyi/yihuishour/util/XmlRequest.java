@@ -7,6 +7,8 @@
 
 package cn.edu.seu.srtp.prjyi.yihuishour.util;
 
+import android.util.Xml;
+
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -20,40 +22,49 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 
+import com.android.volley.Response.Listener;
+import com.android.volley.Response.ErrorListener;
+
 /**
  * Created by pm421 on 7/29/2017.
  */
 
 public class XmlRequest extends Request<XmlPullParser> {
-    private final Response.Listener<XmlPullParser> mListener;
-
-    public XmlRequest(int method, String url, Response.Listener<XmlPullParser> listener,
-                      Response.ErrorListener errorListener) {
+    //Listener接口
+    private final Listener<XmlPullParser> mListener;
+    //构造方法，其中参数我们应该都很清楚了
+    public XmlRequest(int method, String url, Listener<XmlPullParser> listener,
+                      ErrorListener errorListener) {
         super(method, url, errorListener);
-        this.mListener = listener;
+        mListener = listener;
     }
-    /*parseNetworkResponse()方法中则应该对服务器响应的数据进行解析，
-    其中数据是以字节的形式存放在NetworkResponse的data变量中的，
-    这里将数据取出然后组装成一个String，并传入Response的success()方法中即可。*/
+    //默认为get请求方式的构造方法
+    public XmlRequest(String url, Listener<XmlPullParser> listener, ErrorListener errorListener) {
+        this(Method.GET, url, listener, errorListener);
+    }
+    //parseNetworkResponse方法
     @Override
     protected Response<XmlPullParser> parseNetworkResponse(NetworkResponse response) {
         try {
-            String xmlString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = factory.newPullParser();
+            //第一步加工，将得到的数据转为一个字符串
+            String xmlString = new String(response.data, "UTF-8");
+            //这些固定代码就写在这里，以便于我们在使用XmlRequest的时候，只需要关注我们如何去解析获得的xml数据就可以了
+            XmlPullParser parser = Xml.newPullParser();
             parser.setInput(new StringReader(xmlString));
+            //第二步加工。直接返回这个xmlPullPaser
             return Response.success(parser, HttpHeaderParser.parseCacheHeaders(response));
-        } catch (UnsupportedEncodingException e) {
+        }
+        catch(UnsupportedEncodingException e){
             return Response.error(new ParseError(e));
-        }catch (XmlPullParserException e) {
+        }
+        catch (XmlPullParserException e) {
             return Response.error(new ParseError(e));
+        }
+    }
+        //deliverResponse方法，直接固定一句话
+        @Override
+        protected void deliverResponse(XmlPullParser response) {
+            mListener.onResponse(response);
         }
 
     }
-    /*deliverResponse()方法中的实现很简单，仅仅是调用了mListener中的onResponse()方法，
-    并将response内容传入即可，这样就可以将服务器响应的数据进行回调了。*/
-    @Override
-    protected void deliverResponse(XmlPullParser xmlPullParser) {
-        mListener.onResponse(xmlPullParser);
-    }
-}

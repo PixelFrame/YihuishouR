@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -42,22 +41,18 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
 
     ListView mListView;
     List<LocationPoint> locationPoints;
-
-    String locationURL = "";
+    String locationURL = "http://115.159.188.117/data/LocationPoints_test.xml";
 
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.map_tab, container, false);
-        initListView(view);
-
+        final View view = inflater.inflate(R.layout.map_tab, container, false);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        XmlRequest xmlRequest = new XmlRequest(Request.Method.POST, locationURL, new Response.Listener<XmlPullParser>() {
+        XmlRequest xmlRequest = new XmlRequest(locationURL, new Response.Listener<XmlPullParser>() {
             @Override
             public void onResponse(XmlPullParser response) {
                 try {
-                    //我们看到第二个参数 “listRoot”我们传入的是item。第三个参数是ListBean.class
-                    //第四个参数“beanRoot”我们传入的是root。第四个参数是Bean.class
                     locationPoints = XmlParser.parse_location(response);
+                    initListView(view);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -66,20 +61,27 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
             }
-
         });
         requestQueue.add(xmlRequest);
+
+        initListView(view);
         return view;
     }
 
     private void initListView(View view) {
         mListView = (ListView) view.findViewById(R.id.id_view_rplist);
         List<HashMap<String, String>> data = new ArrayList<>();
-        for(LocationPoint locationPoint:locationPoints)
-        {
+        if(locationPoints != null) {
+            for (LocationPoint locationPoint : locationPoints) {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("ItemTitle", locationPoint.getPoiName());
+                map.put("ItemText", locationPoint.getPoiDesc());
+                data.add(map);
+            }
+        } else {
             HashMap<String, String> map = new HashMap<>();
-            map.put("ItemTitle", locationPoint.getPoiName());
-            map.put("ItemText", locationPoint.getPoiDesc());
+            map.put("ItemTitle", "无数据");
+            map.put("ItemText", "无数据");
             data.add(map);
         }
         SimpleAdapter mRPlist = new SimpleAdapter(getContext(),
@@ -91,7 +93,10 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(),MapActivity.class));
+                Intent it = new Intent(getActivity(),MapActivity.class);
+                it.putExtra("Latitude", locationPoints.get(position).getLatLng().latitude);
+                it.putExtra("Longitude", locationPoints.get(position).getLatLng().longitude);
+                startActivity(it);
             }
         });
     }

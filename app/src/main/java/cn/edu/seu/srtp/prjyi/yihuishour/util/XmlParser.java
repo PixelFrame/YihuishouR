@@ -234,11 +234,12 @@ public class XmlParser {
                     break;
                 case XmlPullParser.START_TAG:
                     if (parser.getName().equalsIgnoreCase("locationPoint")) {
-                        locationPoint = new LocationPoint(Double.parseDouble(parser.getAttributeValue(0)), 
+                        locationPoint = new LocationPoint(
+                                Double.parseDouble(parser.getAttributeValue(0)),
                                 Double.parseDouble(parser.getAttributeValue(1)), 
                                 parser.getAttributeValue(2),
                                 parser.getAttributeValue(3),
-                                Integer.parseInt(parser.getAttributeValue(3)));
+                                Integer.parseInt(parser.getAttributeValue(4)));
                         locationPoints.add(locationPoint);
                         locationPoint = null;
                     }
