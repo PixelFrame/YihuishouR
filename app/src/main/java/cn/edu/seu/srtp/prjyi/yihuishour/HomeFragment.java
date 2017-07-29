@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/7/29.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -240,9 +240,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         AdDomain adDomain = new AdDomain();  
         adDomain.setId("108078");  
         adDomain.setDate("3月4日");  
-        adDomain.setTitle("我和令计划只是同姓");  
-        adDomain.setTopicFrom("阿宅");  
-        adDomain.setTopic("我想知道令狐安和令计划有什么关系？");  
+        adDomain.setTitle("测试用标题");  
+        adDomain.setTopicFrom("CNN");
+        adDomain.setTopic("广告内容 AD CONTENT");  
         adDomain.setImgUrl("http://g.hiphotos.baidu.com/image/w%3D310/sign=bb99d6add2c8a786be2a4c0f5708c9c7/d50735fae6cd7b8900d74cd40c2442a7d9330e29.jpg");  
         adDomain.setAd(false);  
         adList.add(adDomain);  
@@ -250,9 +250,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         AdDomain adDomain2 = new AdDomain();  
         adDomain2.setId("108078");  
         adDomain2.setDate("3月5日");  
-        adDomain2.setTitle("我和令计划只是同姓");  
-        adDomain2.setTopicFrom("小巫");  
-        adDomain2.setTopic("“我想知道令狐安和令计划有什么关系？”");  
+        adDomain2.setTitle("测试用标题");  
+        adDomain2.setTopicFrom("BBC");
+        adDomain2.setTopic("广告内容 AD CONTENT");
         adDomain2  
                 .setImgUrl("http://g.hiphotos.baidu.com/image/w%3D310/sign=7cbcd7da78f40ad115e4c1e2672e1151/eaf81a4c510fd9f9a1edb58b262dd42a2934a45e.jpg");  
         adDomain2.setAd(false);  
@@ -261,9 +261,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         AdDomain adDomain3 = new AdDomain();  
         adDomain3.setId("108078");  
         adDomain3.setDate("3月6日");  
-        adDomain3.setTitle("我和令计划只是同姓");  
-        adDomain3.setTopicFrom("旭东");  
-        adDomain3.setTopic("“我想知道令狐安和令计划有什么关系？”");  
+        adDomain3.setTitle("测试用标题");  
+        adDomain3.setTopicFrom("新华网");
+        adDomain3.setTopic("广告内容 AD CONTENT");
         adDomain3  
                 .setImgUrl("http://e.hiphotos.baidu.com/image/w%3D310/sign=392ce7f779899e51788e3c1572a6d990/8718367adab44aed22a58aeeb11c8701a08bfbd4.jpg");  
         adDomain3.setAd(false);  
@@ -272,9 +272,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         AdDomain adDomain4 = new AdDomain();  
         adDomain4.setId("108078");  
         adDomain4.setDate("3月7日");  
-        adDomain4.setTitle("我和令计划只是同姓");  
-        adDomain4.setTopicFrom("小软");  
-        adDomain4.setTopic("“我想知道令狐安和令计划有什么关系？”");  
+        adDomain4.setTitle("测试用标题");  
+        adDomain4.setTopicFrom("人民网");
+        adDomain4.setTopic("广告内容 AD CONTENT");
         adDomain4  
                 .setImgUrl("http://d.hiphotos.baidu.com/image/w%3D310/sign=54884c82b78f8c54e3d3c32e0a282dee/a686c9177f3e670932e4cf9338c79f3df9dc55f2.jpg");  
         adDomain4.setAd(false);  
@@ -283,9 +283,9 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         AdDomain adDomain5 = new AdDomain();  
         adDomain5.setId("108078");  
         adDomain5.setDate("3月8日");  
-        adDomain5.setTitle("我和令计划只是同姓");  
-        adDomain5.setTopicFrom("大熊");  
-        adDomain5.setTopic("“我想知道令狐安和令计划有什么关系？”");  
+        adDomain5.setTitle("测试用标题");  
+        adDomain5.setTopicFrom("东南大学最高领导人");
+        adDomain5.setTopic("“广告内容 AD CONTENT”");  
         adDomain5  
                 .setImgUrl("http://e.hiphotos.baidu.com/image/w%3D310/sign=66270b4fe8c4b7453494b117fffd1e78/0bd162d9f2d3572c7dad11ba8913632762d0c30d.jpg");  
         adDomain5.setAd(true); // 代表是广告  
