@@ -9,29 +9,23 @@ package cn.edu.seu.srtp.prjyi.yihuishour.util;
 
 import android.util.Xml;
 
-import com.amap.api.maps.model.LatLng;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
-import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.order;
 
 /**
  * Created by pm421 on 7/27/2017.
  * XML解析/生成类 using XmlPullParser
  */
 
-public class XMLParser {
-    public List<Order> parse_order(InputStream is) throws Exception {
+public class XmlParser {
+    public static List<Order> parse_order(XmlPullParser parser) throws Exception {
         List<Order> orders = null;
         Order order = null;
-        XmlPullParser parser = Xml.newPullParser();
-        parser.setInput(is, "UTF-8");
 
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT){
@@ -87,7 +81,7 @@ public class XMLParser {
         }
         return orders;
     }
-    public String serialize_order(List<Order> orders) throws Exception{
+    public static String serialize_order(List<Order> orders) throws Exception{
         XmlSerializer serializer = Xml.newSerializer();
         StringWriter writer = new StringWriter();
         serializer.setOutput(writer);
@@ -149,11 +143,9 @@ public class XMLParser {
 
         return writer.toString();
     }
-    public List<Item> parse_item(InputStream is) throws Exception {
+    public static List<Item> parse_item(XmlPullParser parser) throws Exception {
         List<Item> items = null;
         Item item = null;
-        XmlPullParser parser = Xml.newPullParser();
-        parser.setInput(is, "UTF-8");
 
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT){
@@ -192,7 +184,7 @@ public class XMLParser {
         }
         return items;
     }
-    public String serialize_item(List<Item> items) throws Exception{
+    public static String serialize_item(List<Item> items) throws Exception{
         XmlSerializer serializer = Xml.newSerializer();
         StringWriter writer = new StringWriter();
         serializer.setOutput(writer);
@@ -230,11 +222,9 @@ public class XMLParser {
 
         return writer.toString();
     }
-    public List<LocationPoint> parse_location(InputStream is) throws Exception {
+    public static List<LocationPoint> parse_location(XmlPullParser parser) throws Exception {
         List<LocationPoint> locationPoints = null;
         LocationPoint locationPoint = null;
-        XmlPullParser parser = Xml.newPullParser();
-        parser.setInput(is, "UTF-8");
 
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT){
@@ -247,6 +237,7 @@ public class XMLParser {
                         locationPoint = new LocationPoint(Double.parseDouble(parser.getAttributeValue(0)), 
                                 Double.parseDouble(parser.getAttributeValue(1)), 
                                 parser.getAttributeValue(2),
+                                parser.getAttributeValue(3),
                                 Integer.parseInt(parser.getAttributeValue(3)));
                         locationPoints.add(locationPoint);
                         locationPoint = null;

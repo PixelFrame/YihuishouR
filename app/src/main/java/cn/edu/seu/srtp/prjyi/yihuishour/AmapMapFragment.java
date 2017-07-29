@@ -17,8 +17,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+
+import org.xmlpull.v1.XmlPullParser;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import cn.edu.seu.srtp.prjyi.yihuishour.util.LocationPoint;
+import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlParser;
+import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlRequest;
 
 /**
  * Created by pm421 on 7/15/2017.
@@ -28,21 +41,45 @@ import java.util.HashMap;
 public class AmapMapFragment extends android.support.v4.app.Fragment {
 
     ListView mListView;
+    List<LocationPoint> locationPoints;
+
+    String locationURL = "";
+
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map_tab, container, false);
         initListView(view);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        XmlRequest xmlRequest = new XmlRequest(Request.Method.POST, locationURL, new Response.Listener<XmlPullParser>() {
+            @Override
+            public void onResponse(XmlPullParser response) {
+                try {
+                    //我们看到第二个参数 “listRoot”我们传入的是item。第三个参数是ListBean.class
+                    //第四个参数“beanRoot”我们传入的是root。第四个参数是Bean.class
+                    locationPoints = XmlParser.parse_location(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+
+        });
+        requestQueue.add(xmlRequest);
         return view;
     }
 
     private void initListView(View view) {
         mListView = (ListView) view.findViewById(R.id.id_view_rplist);
-        ArrayList<HashMap<String, String>> data = new ArrayList<>();
-        for(int i=0;i<30;i++)
+        List<HashMap<String, String>> data = new ArrayList<>();
+        for(LocationPoint locationPoint:locationPoints)
         {
             HashMap<String, String> map = new HashMap<>();
-            map.put("ItemTitle", "Point " + i);
-            map.put("ItemText", "POINT " + i + " LOCATION DATA");
+            map.put("ItemTitle", locationPoint.getPoiName());
+            map.put("ItemText", locationPoint.getPoiDesc());
             data.add(map);
         }
         SimpleAdapter mRPlist = new SimpleAdapter(getContext(),

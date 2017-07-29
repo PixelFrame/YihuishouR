@@ -17,15 +17,18 @@ import com.amap.api.maps.model.LatLng;
 public class LocationPoint {
     private LatLng latLng;
     private String poiName;
+    private String poiDesc;
     private int pid;
 
-    public LocationPoint(double var1, double var3, String desc, int id) {
+    public LocationPoint(double var1, double var3, String name, String desc, int id) {
         latLng = new LatLng(var1, var3);
-        poiName = desc;
+        poiName = name;
+        poiDesc = desc;
         pid = id;
     }
 
     public LatLng getLatLng() { return latLng; }
     public String getPoiName() { return poiName; }
+    public String getPoiDesc() { return poiDesc; }
     public int getPid() { return pid; }
 }
