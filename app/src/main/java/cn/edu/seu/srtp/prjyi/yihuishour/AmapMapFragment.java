@@ -100,7 +100,6 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
                         }
                         data.clear();
                         data.addAll(newdata);
-                    } else {
                     }
                     listAdapter.notifyDataSetChanged();
                 } catch (Exception e) {

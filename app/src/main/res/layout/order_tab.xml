@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Created by Pixel Frame on 2017/8/1.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -15,8 +15,7 @@
         android:id="@+id/id_view_orderlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/id_button_neworder"
-        android:layout_weight="1.09" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/id_button_neworder"

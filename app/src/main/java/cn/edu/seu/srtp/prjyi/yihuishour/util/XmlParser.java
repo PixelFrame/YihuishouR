@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/8/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -61,7 +61,7 @@ public class XmlParser {
                         order.setItemPrice(Double.parseDouble(parser.getText()));
                     } else if(parser.getName().equals("date")) {
                         eventType = parser.next();
-                        order.setDate(Integer.parseInt(parser.getText()));
+                        order.setDate(Long.parseLong(parser.getText()));
                     } else if(parser.getName().equals("status")) {
                         eventType = parser.next();
                         order.setStatus(Integer.parseInt(parser.getText()));
