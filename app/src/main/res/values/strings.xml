@@ -16,7 +16,7 @@
     <string name="Locate_Error">定位失败，请检查设置</string>
     <string name="username">用户名</string>
     <string name="userinfo">普通用户</string>
-    <string name="userlv">Lv 0</string>
+    <string name="userlv">Lv %1$d</string>
     <string name="setting">设置项</string>
     <string name="order_name">品名</string>
     <string name="order_date">时间</string>

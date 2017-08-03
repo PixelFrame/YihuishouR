@@ -264,6 +264,8 @@ public class XmlParser {
                         user.setName(parser.getText());
                     } else if (parser.getName().equals("password")) {
                         user.setPassword(parser.getText());
+                    } else if (parser.getName().equals("level")){
+                        user.setLevel(Integer.parseInt(parser.getText()));
                     }
                     break;
             }

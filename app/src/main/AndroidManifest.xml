@@ -38,6 +38,7 @@
         android:value="abd537da4ab53f1f1b5775a6f91969cb" />
 
     <application
+        android:name=".util.GlobalData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
