@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/8/3.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -13,21 +13,19 @@ package cn.edu.seu.srtp.prjyi.yihuishour.util;
  */
 
 public class User {
-    int id;
-    String mName;
-    String mPassword;
-    int mAvatar;
-    Order mOrder[];
-    Item mShoppingList[];
+    private int id;
+    private String name;
+    private String password;
+    private int avatar;
+    private Order order[];
+    private Item shoppingList[];
     public User(){
     }
-    protected void UpdateUser(){
+    protected void updateUser(){
     }
-    public void Login(){
+    public void setName(String str) { name = str; }
 
-    }
-    public void Logout(){
+    public void setId(int i) { id = i; }
 
-    }
-
+    public void setPassword(String str) { password = str; }
 }

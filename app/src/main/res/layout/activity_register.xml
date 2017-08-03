@@ -25,13 +25,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        
         <EditText
             android:id="@+id/id_edit_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/id_tv_username"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="text" />
 
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="43dp"
+            android:layout_marginStart="40dp"
             android:text="@string/username"
             android:textSize="20sp" />
 
@@ -50,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/id_edit_username"
-            android:layout_marginTop="39dp"
+            android:layout_below="@+id/id_tv_pwd"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPassword" />
 
@@ -61,28 +62,38 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/id_tv_username"
             android:layout_below="@+id/id_edit_username"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="10dp"
             android:text="@string/password"
+            android:textSize="20sp" />
+        
+        <EditText
+            android:id="@+id/id_edit_conpwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_tv_conpwd"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/id_tv_conpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/id_tv_pwd"
+            android:layout_below="@+id/id_edit_pwd"
+            android:layout_marginTop="10dp"
+            android:text="@string/confirm_pwd"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/id_button_login"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/id_edit_pwd"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:text="@string/botton_login" />
-
-        <Button
-            android:id="@+id/id_button_logon"
+            android:id="@+id/id_button_reg"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/id_button_login"
-            android:text="@string/botton_register" />
+            android:text="@string/botton_register"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

@@ -7,9 +7,8 @@
 
 package cn.edu.seu.srtp.prjyi.yihuishour;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,59 +25,56 @@ import java.util.Map;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity {
 
-    Button loginButton;
     Button registerButton;
     EditText editUsername;
     EditText editPassword;
-
+    EditText editConfirmPassword;
+    View.OnClickListener lisRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        loginButton = (Button) findViewById(R.id.id_button_login);
-        registerButton = (Button) findViewById(R.id.id_button_logon);
+        setContentView(R.layout.activity_register);
+        registerButton = (Button) findViewById(R.id.id_button_reg);
         editUsername = (EditText) findViewById(R.id.id_edit_username);
         editPassword = (EditText) findViewById(R.id.id_edit_pwd);
-        loginButton.setOnClickListener(this);
-        registerButton.setOnClickListener(this);
+        editConfirmPassword = (EditText) findViewById(R.id.id_edit_conpwd);
+
+        lisRegister = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                register();
+            }
+        };
+        registerButton.setOnClickListener(lisRegister);
     }
 
-    private void login() {
+    private void register() {
         RequestQueue requestQueue = newRequestQueue(this);
-        String loginURL = "http://115.159.188.117/PHP/login.php";
+        String loginURL = "http://115.159.188.117/PHP/register.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, loginURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this,response,Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                    }
-                }) {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(RegisterActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }) {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
-                params.put("login", "true");
                 params.put("username",editUsername.getText().toString().trim());
                 params.put("password",editPassword.getText().toString().trim());
+                params.put("con_password",editConfirmPassword.getText().toString().trim());
                 return params;
             }
         };
         requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.id_button_login){
-            login();
-        } else if(v.getId() == R.id.id_button_logon){
-            startActivity(new Intent(this, RegisterActivity.class));
-        }
     }
 }

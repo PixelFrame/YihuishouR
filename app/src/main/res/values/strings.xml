@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Created by Pixel Frame on 2017/8/3.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -36,4 +36,5 @@
     <string name="button_neworder">新的回收订单</string>
     <string name="button_scan">扫描二维码</string>
     <string name="Light">闪 光 灯</string>
+    <string name="confirm_pwd">确认密码</string>
 </resources>

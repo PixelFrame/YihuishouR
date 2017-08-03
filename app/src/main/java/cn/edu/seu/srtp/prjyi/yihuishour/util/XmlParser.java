@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/1.
+ * Created by Pixel Frame on 2017/8/3.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -227,7 +227,7 @@ public class XmlParser {
         LocationPoint locationPoint = null;
 
         int eventType = parser.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT){
+        while (eventType != XmlPullParser.END_DOCUMENT) {
             switch (eventType) {
                 case XmlPullParser.START_DOCUMENT:
                     locationPoints = new ArrayList<>();
@@ -248,5 +248,27 @@ public class XmlParser {
             eventType = parser.next();
         }
         return locationPoints;
+    }
+    public static User parse_user(XmlPullParser parser) throws Exception{
+        User user = null;
+        int eventType = parser.getEventType();
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            switch (eventType) {
+                case XmlPullParser.START_DOCUMENT:
+                    user = new User();
+                    break;
+                case XmlPullParser.START_TAG:
+                    if (parser.getName().equals("uid")){
+                      user.setId(Integer.parseInt(parser.getText()));
+                    } else if (parser.getName().equals("name")) {
+                        user.setName(parser.getText());
+                    } else if (parser.getName().equals("password")) {
+                        user.setPassword(parser.getText());
+                    }
+                    break;
+            }
+            eventType = parser.next();
+        }
+        return user;
     }
 }
