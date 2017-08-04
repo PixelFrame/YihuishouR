@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/8/3.
+  ~ Created by Pixel Frame on 2017/8/5.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -16,7 +16,7 @@
     <string name="Locate_Error">定位失败，请检查设置</string>
     <string name="username">用户名</string>
     <string name="userinfo">普通用户</string>
-    <string name="userlv">Lv %1$d</string>
+    <string name="userlv">Lv 0</string>
     <string name="setting">设置项</string>
     <string name="order_name">品名</string>
     <string name="order_date">时间</string>
@@ -37,4 +37,5 @@
     <string name="button_scan">扫描二维码</string>
     <string name="Light">闪 光 灯</string>
     <string name="confirm_pwd">确认密码</string>
+    <string name="formatuserlv">Lv %1$d</string>
 </resources>

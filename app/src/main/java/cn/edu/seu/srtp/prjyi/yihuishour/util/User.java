@@ -1,11 +1,13 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
  */
 
 package cn.edu.seu.srtp.prjyi.yihuishour.util;
+
+import android.graphics.Bitmap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,11 @@ import java.util.List;
  */
 
 public class User {
-    private int id = 000000;
+    private int id = -1;
     private String name = "用户名";
     private String password = "";
     private int level = 0;
-    private int avatar = 000000;
+    private Bitmap avatar = null;
     private List<Order> orders = new ArrayList<>();
     private List<Item> shoppingList = new ArrayList<>();
     User(){}
@@ -32,6 +34,8 @@ public class User {
     public void setPassword(String str) { password = str; }
     public void setLevel(int i) { level = i; }
 
+    public Bitmap getAvatar() { return avatar; }
+    public int getId() { return id; }
     public String getName() { return name; }
     public int getLevel() { return level; }
 }

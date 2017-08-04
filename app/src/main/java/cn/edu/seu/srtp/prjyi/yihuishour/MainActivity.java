@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -179,5 +179,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mImgMap.setImageResource(R.mipmap.map_unpressed);
         mImgSetting.setImageResource(R.mipmap.setting_unpressed);
         mImgOrder.setImageResource(R.mipmap.order_unpressed);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
     }
 }

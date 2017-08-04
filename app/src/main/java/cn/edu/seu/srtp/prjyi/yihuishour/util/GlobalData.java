@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -16,7 +16,7 @@ import android.app.Application;
 
 public class GlobalData extends Application {
 
-    private User user = new User();
+    private User user;
 
     @Override
     public void onCreate(){

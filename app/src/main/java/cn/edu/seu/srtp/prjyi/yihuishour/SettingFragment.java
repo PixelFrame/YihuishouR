@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -34,7 +35,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
     ListView settingList;
     ImageButton userButton;
     View.OnClickListener lisSettings;
-
+    ImageView userAvatar;
     TextView userName;
     TextView userLevel;
     TextView userInfo;
@@ -53,6 +54,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
         };
         userButton.setOnClickListener(lisSettings);
 
+        userAvatar = (ImageView) view.findViewById(R.id.id_iv_avatar);
         userName = (TextView) view.findViewById(R.id.id_tv_username);
         userInfo = (TextView) view.findViewById(R.id.id_tv_userinfo);
         userLevel = (TextView) view.findViewById(R.id.id_tv_userlv);
@@ -63,14 +65,23 @@ public class SettingFragment extends android.support.v4.app.Fragment {
 
     private void initUserView() {
         GlobalData globalData = (GlobalData) getActivity().getApplication();
-        userName.setText(globalData.getUser().getName());
-        userLevel.setText(String.format(getResources().getString(R.string.userlv),globalData.getUser().getLevel() % 1000 + 1));
+        if(globalData.getUser() != null) {
+            if (globalData.getUser().getId() != -1)
+                userButton.setVisibility(View.INVISIBLE);
+            if (globalData.getUser().getAvatar() != null)
+                userAvatar.setImageBitmap(globalData.getUser().getAvatar());
+            userName.setText(globalData.getUser().getName());
+            userLevel.setText(String.format(getResources().getString(R.string.formatuserlv),globalData.getUser().getLevel() % 1000 + 1));
 
-        String info;
-        if (globalData.getUser().getLevel()/1000 > 0) {
-            info = "VIP" + globalData.getUser().getLevel()/1000 + "用户";
-        } else { info = "普通用户"; }
-        userInfo.setText(info);
+            String info;
+
+            if (globalData.getUser().getLevel()/1000 == 666) {
+                info = "系统管理员";
+            } else if (globalData.getUser().getLevel()/1000 > 0) {
+                info = "VIP" + globalData.getUser().getLevel()/1000 + "用户";
+            } else { info = "普通用户"; }
+            userInfo.setText(info);
+        }
     }
 
     private void initListView(View view) {

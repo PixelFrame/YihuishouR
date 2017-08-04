@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -12,6 +12,7 @@ import android.util.Xml;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -249,7 +250,9 @@ public class XmlParser {
         }
         return locationPoints;
     }
-    public static User parse_user(XmlPullParser parser) throws Exception{
+    public static User parse_user(String xmlString) throws Exception{
+        XmlPullParser parser = Xml.newPullParser();
+        parser.setInput(new StringReader(xmlString));
         User user = null;
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -258,13 +261,17 @@ public class XmlParser {
                     user = new User();
                     break;
                 case XmlPullParser.START_TAG:
-                    if (parser.getName().equals("uid")){
-                      user.setId(Integer.parseInt(parser.getText()));
-                    } else if (parser.getName().equals("name")) {
+                    if (parser.getName().equals("id")){
+                        eventType = parser.next();
+                        user.setId(Integer.parseInt(parser.getText()));
+                    } else if (parser.getName().equals("username")) {
+                        eventType = parser.next();
                         user.setName(parser.getText());
                     } else if (parser.getName().equals("password")) {
+                        eventType = parser.next();
                         user.setPassword(parser.getText());
-                    } else if (parser.getName().equals("level")){
+                    } else if (parser.getName().equals("level")) {
+                        eventType = parser.next();
                         user.setLevel(Integer.parseInt(parser.getText()));
                     }
                     break;

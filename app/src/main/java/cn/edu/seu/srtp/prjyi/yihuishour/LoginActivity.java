@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -23,6 +23,9 @@ import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
+import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlParser;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -53,7 +56,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
+                        if(response.equals("登录失败")) {
+                            Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
+                        } else {
+                            try {
+                                GlobalData globalData = (GlobalData) getApplicationContext();
+                                globalData.setUser(XmlParser.parse_user(response));
+                                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
+                                finish();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(LoginActivity.this, "系统错误", Toast.LENGTH_LONG).show();
+                            }
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
