@@ -273,6 +273,9 @@ public class XmlParser {
                     } else if (parser.getName().equals("level")) {
                         eventType = parser.next();
                         user.setLevel(Integer.parseInt(parser.getText()));
+                    } else if (parser.getName().equals("avatar")) {
+                        eventType = parser.next();
+                        user.setAvatar(parser.getText());
                     }
                     break;
             }

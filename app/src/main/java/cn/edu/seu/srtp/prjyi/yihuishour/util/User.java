@@ -7,8 +7,6 @@
 
 package cn.edu.seu.srtp.prjyi.yihuishour.util;
 
-import android.graphics.Bitmap;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +20,10 @@ public class User {
     private String name = "用户名";
     private String password = "";
     private int level = 0;
-    private Bitmap avatar = null;
+    private String avatar = null;
     private List<Order> orders = new ArrayList<>();
     private List<Item> shoppingList = new ArrayList<>();
-    User(){}
+    public User(){}
 
     protected void updateUser(){
     }
@@ -33,8 +31,9 @@ public class User {
     public void setId(int i) { id = i; }
     public void setPassword(String str) { password = str; }
     public void setLevel(int i) { level = i; }
+    public void setAvatar(String ava) { avatar = ava; }
 
-    public Bitmap getAvatar() { return avatar; }
+    public String getAvatar() { return avatar; }
     public int getId() { return id; }
     public String getName() { return name; }
     public int getLevel() { return level; }

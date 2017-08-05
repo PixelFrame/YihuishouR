@@ -8,6 +8,7 @@
 package cn.edu.seu.srtp.prjyi.yihuishour.util;
 
 import android.app.Application;
+import android.graphics.Bitmap;
 
 /**
  * Created by pm421 on 8/3/2017.
@@ -17,6 +18,7 @@ import android.app.Application;
 public class GlobalData extends Application {
 
     private User user;
+    private Bitmap userBmpAvatar;
 
     @Override
     public void onCreate(){
@@ -26,4 +28,6 @@ public class GlobalData extends Application {
     public void setUser(User u) { this.user = u; }
     public User getUser() { return user; }
 
+    public void setBmpAvatar(Bitmap bmp) { userBmpAvatar = bmp; }
+    public Bitmap getBmpAvatar () { return userBmpAvatar; }
 }

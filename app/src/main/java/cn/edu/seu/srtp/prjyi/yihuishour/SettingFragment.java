@@ -8,6 +8,7 @@
 package cn.edu.seu.srtp.prjyi.yihuishour;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,12 +20,21 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import cn.edu.seu.srtp.prjyi.yihuishour.settingActivities.AboutActivity;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
+import cn.edu.seu.srtp.prjyi.yihuishour.util.User;
+
+import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /**
  * Created by pm421 on 7/15/2017.
@@ -69,7 +79,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
             if (globalData.getUser().getId() != -1)
                 userButton.setVisibility(View.INVISIBLE);
             if (globalData.getUser().getAvatar() != null)
-                userAvatar.setImageBitmap(globalData.getUser().getAvatar());
+                updateAvatar();
             userName.setText(globalData.getUser().getName());
             userLevel.setText(String.format(getResources().getString(R.string.formatuserlv),globalData.getUser().getLevel() % 1000 + 1));
 
@@ -128,7 +138,13 @@ public class SettingFragment extends android.support.v4.app.Fragment {
         settingList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(getActivity(),AboutActivity.class));
+               if(position != 7) startActivity(new Intent(getActivity(),AboutActivity.class));
+               else {
+                   GlobalData globalData = (GlobalData) getActivity().getApplication();
+                   globalData.setUser(new User());
+                   userButton.setVisibility(View.VISIBLE);
+                   userAvatar.setImageResource(R.mipmap.setting_unpressed);
+               }
             }
         });
     }
@@ -137,5 +153,25 @@ public class SettingFragment extends android.support.v4.app.Fragment {
     public void onResume(){
         super.onResume();
         initUserView();
+    }
+    private void updateAvatar() {
+        GlobalData globalData = (GlobalData) getActivity().getApplicationContext();
+        RequestQueue requestQueue = newRequestQueue(getContext());
+        ImageRequest imageRequest = new ImageRequest(globalData.getUser().getAvatar(),
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap bitmap) {
+                        GlobalData resGlobalData = (GlobalData) getActivity().getApplicationContext();
+                        resGlobalData.setBmpAvatar(bitmap);
+                        userAvatar.setImageBitmap(resGlobalData.getBmpAvatar());
+                    }
+                }, 500, 500, Bitmap.Config.ARGB_8888,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Toast.makeText(getContext(),"网络异常",Toast.LENGTH_SHORT).show();
+                    }
+                });
+        requestQueue.add(imageRequest);
     }
 }
