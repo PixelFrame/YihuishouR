@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/3.
+ * Created by Pixel Frame on 2017/8/6.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -58,7 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(RegisterActivity.this,response,Toast.LENGTH_LONG).show();
+                        String status = response.substring(response.lastIndexOf('.')+1 ,response.length());
+                        String msg = response.substring(0, response.lastIndexOf('.'));
+                        Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_LONG).show();
+                        if(status.equals("0")) finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/5.
+ * Created by Pixel Frame on 2017/8/6.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -45,6 +45,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
     ListView settingList;
     ImageButton userButton;
     View.OnClickListener lisSettings;
+    View.OnClickListener lisAvatar;
     ImageView userAvatar;
     TextView userName;
     TextView userLevel;
@@ -60,6 +61,12 @@ public class SettingFragment extends android.support.v4.app.Fragment {
             public void onClick(View v) {
                 Intent it = new Intent(getActivity(), LoginActivity.class);
                 startActivity(it);
+            }
+        };
+        lisAvatar = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UploadAvatarActivity.class));
             }
         };
         userButton.setOnClickListener(lisSettings);
@@ -91,6 +98,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
                 info = "VIP" + globalData.getUser().getLevel()/1000 + "用户";
             } else { info = "普通用户"; }
             userInfo.setText(info);
+            userAvatar.setOnClickListener(lisAvatar);
         }
     }
 
