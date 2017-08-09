@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/8/9.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -22,7 +22,7 @@ import cn.edu.seu.srtp.prjyi.yihuishour.R;
  * 扩展的GridView Adapter
  */
 
-public class MyGridAdapter extends BaseAdapter {
+public class HomeGridAdapter extends BaseAdapter {
     private Context mContext;
     String[] img_text = new String[]{
             "分类1",
@@ -47,7 +47,7 @@ public class MyGridAdapter extends BaseAdapter {
             R.mipmap.grid_item_9,
     };
 
-    public MyGridAdapter(Context mContext) {
+    public HomeGridAdapter(Context mContext) {
         this.mContext = mContext;
     }
 

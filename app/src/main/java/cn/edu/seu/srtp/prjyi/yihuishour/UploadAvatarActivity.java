@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/6.
+ * Created by Pixel Frame on 2017/8/9.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -58,12 +58,12 @@ public class UploadAvatarActivity extends AppCompatActivity implements View.OnCl
         String state = Environment.getExternalStorageState();  
         if (state.equals(Environment.MEDIA_MOUNTED)) {  
             Intent getImageByCamera = new Intent("android.media.action.IMAGE_CAPTURE");  
-            String out_file_path = "YihuishouCapture/";
+            String out_file_path = "Yihuishou/";
             File dir = new File(out_file_path);  
             if (!dir.exists()) {  
                 dir.mkdirs();  
             }  
-            capturePath = "YihuishouCapture/capture_" + System.currentTimeMillis() + ".jpg";
+            capturePath = "Yihuishou/capture_" + System.currentTimeMillis() + ".jpg";
             getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(capturePath)));
             getImageByCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);  
             startActivityForResult(getImageByCamera, 2);

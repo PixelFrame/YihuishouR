@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/29.
+ * Created by Pixel Frame on 2017/8/9.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -28,7 +28,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -39,7 +38,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import cn.edu.seu.srtp.prjyi.yihuishour.util.AdDomain;
-import cn.edu.seu.srtp.prjyi.yihuishour.util.MyGridAdapter;
+import cn.edu.seu.srtp.prjyi.yihuishour.util.HomeGridAdapter;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.MyGridView;
 
 /**
@@ -48,8 +47,6 @@ import cn.edu.seu.srtp.prjyi.yihuishour.util.MyGridView;
  */
 
 public class HomeFragment extends android.support.v4.app.Fragment {
-
-    public static String IMAGE_CACHE_PATH = "imageloader/Cache";
     private ViewPager adViewPager;
     private List<ImageView> imageViews;
     private List<View> dots;
@@ -96,9 +93,14 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     }
 
     private void initImageLoader() {
-        File cacheDir = StorageUtils.getOwnCacheDirectory(getActivity().getApplicationContext(), IMAGE_CACHE_PATH);
         DisplayImageOptions defaultOptions = (new Builder()).cacheInMemory(true).cacheOnDisc(true).build();
-        ImageLoaderConfiguration config = (new com.nostra13.universalimageloader.core.ImageLoaderConfiguration.Builder(getActivity())).defaultDisplayImageOptions(defaultOptions).memoryCache(new LruMemoryCache(12582912)).memoryCacheSize(12582912).discCacheSize(33554432).discCacheFileCount(100).discCache(new UnlimitedDiscCache(cacheDir)).threadPriority(3).tasksProcessingOrder(QueueProcessingType.LIFO).build();
+        ImageLoaderConfiguration config =
+                (new ImageLoaderConfiguration.Builder(getActivity()))
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new LruMemoryCache(12582912))
+                .memoryCacheSize(12582912)
+                .threadPriority(3)
+                .tasksProcessingOrder(QueueProcessingType.LIFO).build();
         ImageLoader.getInstance().init(config);
     }
 
@@ -296,6 +298,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
     private void initGridView(View view) {
         this.gridview = (MyGridView)view.findViewById(R.id.id_view_gridview);
-        this.gridview.setAdapter(new MyGridAdapter(getContext()));
+        this.gridview.setAdapter(new HomeGridAdapter(getContext()));
     }
 }

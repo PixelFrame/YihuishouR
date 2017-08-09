@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/6.
+ * Created by Pixel Frame on 2017/8/9.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -66,7 +66,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
         lisAvatar = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), UploadAvatarActivity.class));
+                startActivity(new Intent(getActivity(), SelectAvatarActivity.class));
             }
         };
         userButton.setOnClickListener(lisSettings);

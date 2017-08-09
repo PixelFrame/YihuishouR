@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/8/9.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -47,7 +47,7 @@ public class OrderActivity extends AppCompatActivity {
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(intentResult != null) {
             if(intentResult.getContents() == null) {
-                Toast.makeText(this,"内容为空",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"扫描失败，请重试",Toast.LENGTH_LONG).show();
             } else {
                 String ScanResult = intentResult.getContents();
                 Toast.makeText(this,"扫描成功"+ScanResult,Toast.LENGTH_LONG).show();
