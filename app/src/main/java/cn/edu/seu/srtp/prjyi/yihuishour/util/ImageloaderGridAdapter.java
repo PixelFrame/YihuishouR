@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/9.
+ * Created by Pixel Frame on 2017/8/26.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -36,18 +36,18 @@ public class ImageloaderGridAdapter extends BaseAdapter {
             .build();                                   // 创建配置过得DisplayImageOption对象;
 
     final private String[] IMAGES = {
-            "http://115.159.188.117/img/Avatar/1.png",
-            "http://115.159.188.117/img/Avatar/2.png",
-            "http://115.159.188.117/img/Avatar/3.png",
-            "http://115.159.188.117/img/Avatar/4.png",
-            "http://115.159.188.117/img/Avatar/5.png",
-            "http://115.159.188.117/img/Avatar/6.png",
-            "http://115.159.188.117/img/Avatar/7.png",
-            "http://115.159.188.117/img/Avatar/8.png",
-            "http://115.159.188.117/img/Avatar/9.png",
-            "http://115.159.188.117/img/Avatar/10.png",
-            "http://115.159.188.117/img/Avatar/11.png",
-            "http://115.159.188.117/img/Avatar/12.png"
+            _CONSTANTS.AvatarImgURL+"/1.png",
+            _CONSTANTS.AvatarImgURL+"/2.png",
+            _CONSTANTS.AvatarImgURL+"/3.png",
+            _CONSTANTS.AvatarImgURL+"/4.png",
+            _CONSTANTS.AvatarImgURL+"/5.png",
+            _CONSTANTS.AvatarImgURL+"/6.png",
+            _CONSTANTS.AvatarImgURL+"/7.png",
+            _CONSTANTS.AvatarImgURL+"/8.png",
+            _CONSTANTS.AvatarImgURL+"/9.png",
+            _CONSTANTS.AvatarImgURL+"/10.png",
+            _CONSTANTS.AvatarImgURL+"/11.png",
+            _CONSTANTS.AvatarImgURL+"/12.png"
     };
 
     public ImageloaderGridAdapter(Context context) {

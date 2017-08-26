@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/1.
+ * Created by Pixel Frame on 2017/8/26.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -31,6 +31,7 @@ import java.util.List;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.LocationPoint;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlParser;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlRequest;
+import cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS;
 
 /**
  * Created by pm421 on 7/15/2017.
@@ -41,7 +42,6 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
 
     ListView mListView;
     List<LocationPoint> locationPoints;
-    String locationURL = "http://115.159.188.117/data/LocationPoints_test.xml";
     SimpleAdapter listAdapter;
     List<HashMap<String, String>> data;
 
@@ -85,7 +85,7 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
 
     private void internetRequest() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        XmlRequest xmlRequest = new XmlRequest(locationURL, new Response.Listener<XmlPullParser>() {
+        XmlRequest xmlRequest = new XmlRequest(_CONSTANTS.MapDataURL, new Response.Listener<XmlPullParser>() {
             @Override
             public void onResponse(XmlPullParser response) {
                 try {

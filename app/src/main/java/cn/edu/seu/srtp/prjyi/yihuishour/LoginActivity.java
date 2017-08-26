@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/5.
+ * Created by Pixel Frame on 2017/8/26.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -28,6 +28,7 @@ import java.util.Map;
 
 import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlParser;
+import cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -53,8 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void login() {
         RequestQueue requestQueue = newRequestQueue(this);
-        String loginURL = "http://115.159.188.117/PHP/login.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginURL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.LoginURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/6.
+ * Created by Pixel Frame on 2017/8/26.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -22,6 +22,8 @@ import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -53,8 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void register() {
         RequestQueue requestQueue = newRequestQueue(this);
-        String loginURL = "http://115.159.188.117/PHP/register.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, loginURL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.RegisterURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
