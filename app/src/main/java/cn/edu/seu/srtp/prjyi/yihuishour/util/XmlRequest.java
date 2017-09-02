@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/26.
+ * Created by Pixel Frame on 2017/9/2.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -38,9 +38,9 @@ public class XmlRequest extends Request<XmlPullParser> {
         super(method, url, errorListener);
         mListener = listener;
     }
-    //默认为post请求方式的构造方法
+    //默认为get请求方式的构造方法
     public XmlRequest(String url, Listener<XmlPullParser> listener, ErrorListener errorListener) {
-        this(Method.POST, url, listener, errorListener);
+        this(Method.GET, url, listener, errorListener);
     }
     //parseNetworkResponse方法
     @Override
@@ -66,5 +66,4 @@ public class XmlRequest extends Request<XmlPullParser> {
         protected void deliverResponse(XmlPullParser response) {
             mListener.onResponse(response);
         }
-
     }

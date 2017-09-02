@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/1.
+ * Created by Pixel Frame on 2017/9/2.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -106,11 +107,13 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                     listAdapter.notifyDataSetChanged();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity(), "网络连接失败", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "网络连接失败", Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(xmlRequest);

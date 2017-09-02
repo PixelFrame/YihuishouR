@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/8/6.
+  ~ Created by Pixel Frame on 2017/9/2.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -40,4 +40,8 @@
     <string name="formatuserlv">Lv %1$d</string>
     <string name="button_upload">上传头像</string>
     <string name="button_capture">拍照上传</string>
+    <string name="button_confirm">确定</string>
+    <string name="itemname">物品名</string>
+    <string name="itemprice">回收价</string>
+    <string name="itemdesc">物品描述\n物品描述\n物品描述\n物品描述</string>
 </resources>
