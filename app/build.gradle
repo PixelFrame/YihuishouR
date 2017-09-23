@@ -1,11 +1,12 @@
 /*
- * Created by Pixel Frame on 2017/9/2.
+ * Created by Pixel Frame on 2017/9/23.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
@@ -42,4 +43,8 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

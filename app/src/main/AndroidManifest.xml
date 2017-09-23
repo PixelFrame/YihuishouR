@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Created by Pixel Frame on 2017/9/2.
+  ~ Created by Pixel Frame on 2017/9/23.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -64,7 +64,8 @@
             android:name=".SelectAvatarActivity"
             android:label="选择头像"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ItemActivity"></activity>
+        <activity android:name=".ItemActivity" />
+        <activity android:name=".Kot_OrderDetailActivity"></activity>
     </application>
 
 </manifest>
