@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/26.
+ * Created by Pixel Frame on 2017/9/24.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
@@ -46,7 +47,11 @@ public class OrderActivity extends AppCompatActivity {
         View.OnClickListener mLisScan = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customScan();
+                GlobalData globalData = (GlobalData) getApplication();
+                if (globalData.getUser() == null) {
+                    Toast.makeText(getBaseContext(), "请先登录", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(),LoginActivity.class));
+                } else customScan();
             }
         };
         mScan.setOnClickListener(mLisScan);
@@ -83,12 +88,12 @@ public class OrderActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(OrderActivity.this, "订单建立成功", Toast.LENGTH_LONG).show();
+                        Toast.makeText(OrderActivity.this, response, Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(OrderActivity.this, "订单建立失败", Toast.LENGTH_LONG).show();
+                        Toast.makeText(OrderActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override
@@ -112,10 +117,11 @@ public class OrderActivity extends AppCompatActivity {
 
     private Order createOrder() {
         Order order = new Order();
+        order.newItem();
         order.setStatus(0);
         order.setAlias("");
         order.setAttrib(0);
-        order.setDate(Integer.parseInt(new SimpleDateFormat("yyyymmdd").format(new Date())));
+        order.setDate(Integer.parseInt(new SimpleDateFormat("yyyymmdd", Locale.CHINESE).format(new Date())));
         return order;
     }
 }

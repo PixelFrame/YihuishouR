@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/5.
+ * Created by Pixel Frame on 2017/9/24.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -261,7 +261,7 @@ public class XmlParser {
                     user = new User();
                     break;
                 case XmlPullParser.START_TAG:
-                    if (parser.getName().equals("id")){
+                    if (parser.getName().equals("uid")){
                         eventType = parser.next();
                         user.setId(Integer.parseInt(parser.getText()));
                     } else if (parser.getName().equals("username")) {

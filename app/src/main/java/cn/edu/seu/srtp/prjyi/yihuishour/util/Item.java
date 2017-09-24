@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/7/28.
+ * Created by Pixel Frame on 2017/9/24.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -13,11 +13,11 @@ package cn.edu.seu.srtp.prjyi.yihuishour.util;
  */
 
 public class Item {
-    private int id;
-    private String name;
-    private int num;
-    private int catagory;
-    private double price;
+    private int id = 0;
+    private String name = "NULL";
+    private int num = -1;
+    private int catagory = -1;
+    private double price = 42;
 
     public void setId(int i) { this.id = i; }
     public void setName(String text) { this.name = text; }
