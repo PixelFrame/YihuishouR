@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/9/24.
+ * Created by Pixel Frame on 2017/10/14.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -55,7 +55,6 @@ public class OrderActivity extends AppCompatActivity {
             }
         };
         mScan.setOnClickListener(mLisScan);
-
     }
 
     public void customScan(){
