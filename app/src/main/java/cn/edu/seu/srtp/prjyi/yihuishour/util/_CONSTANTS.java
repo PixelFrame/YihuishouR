@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/26.
+ * Created by Pixel Frame on 2017/10/17.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -20,4 +20,5 @@ final public class _CONSTANTS {
     public static String RegisterURL = ServerURL + "php/register.php";
     public static String BannerImgURL = ServerURL + "img/Banner";
     public static String OrderURL = ServerURL + "php/new_order.php";
+    public static String CheckOrderURL = ServerURL + "php/check_order.php";
 }

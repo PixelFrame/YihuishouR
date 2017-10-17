@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/9/24.
+ * Created by Pixel Frame on 2017/10/17.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -24,10 +24,11 @@ import java.util.List;
  */
 
 public class XmlParser {
-    public static List<Order> parse_order(XmlPullParser parser) throws Exception {
+    public static List<Order> parse_order(String xmlString) throws Exception {
         List<Order> orders = null;
         Order order = null;
-
+        XmlPullParser parser = Xml.newPullParser();
+        parser.setInput(new StringReader(xmlString));
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT){
             switch (eventType) {

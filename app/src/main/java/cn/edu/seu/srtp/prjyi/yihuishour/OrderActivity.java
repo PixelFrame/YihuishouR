@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/10/14.
+ * Created by Pixel Frame on 2017/10/17.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -92,14 +92,14 @@ public class OrderActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(OrderActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(OrderActivity.this, "发生错误", Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() {
                 GlobalData globalData = (GlobalData) getApplication();
                 Map<String, String> params = new HashMap<>();
-                params.put("id", Integer.toString(globalData.getUser().getId()));
+                params.put("uid", Integer.toString(globalData.getUser().getId()));
                 List<Order> orders = new ArrayList<>();
                 orders.add(createOrder());
                 try {
@@ -120,7 +120,7 @@ public class OrderActivity extends AppCompatActivity {
         order.setStatus(0);
         order.setAlias("");
         order.setAttrib(0);
-        order.setDate(Integer.parseInt(new SimpleDateFormat("yyyymmdd", Locale.CHINESE).format(new Date())));
+        order.setDate(Integer.parseInt(new SimpleDateFormat("yyMMddhhmm", Locale.CHINESE).format(new Date())));
         return order;
     }
 }
