@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/10/17.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -35,7 +34,6 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.DisplayImageOptions.Builder;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import cn.edu.seu.srtp.prjyi.yihuishour.util.AdDomain;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.HomeGridAdapter;

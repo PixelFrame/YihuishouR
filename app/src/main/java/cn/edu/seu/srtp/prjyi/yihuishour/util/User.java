@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/5.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -21,12 +21,8 @@ public class User {
     private String password = "";
     private int level = 0;
     private String avatar = null;
-    private List<Order> orders = new ArrayList<>();
-    private List<Item> shoppingList = new ArrayList<>();
     public User(){}
 
-    protected void updateUser(){
-    }
     public void setName(String str) { name = str; }
     public void setId(int i) { id = i; }
     public void setPassword(String str) { password = str; }

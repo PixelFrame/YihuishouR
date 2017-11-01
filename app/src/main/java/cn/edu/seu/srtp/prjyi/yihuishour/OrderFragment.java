@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/10/17.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -57,7 +57,12 @@ public class OrderFragment extends android.support.v4.app.Fragment {
         mNewOrderButton = (Button) view.findViewById(R.id.id_button_neworder);
         mLisNewOrder = new View.OnClickListener() {
             @Override
-            public void onClick(View v) {startActivity(new Intent(getActivity(), OrderActivity.class));}
+            public void onClick(View v) {
+                GlobalData globalData = (GlobalData) getActivity().getApplication();
+                if (globalData.getUser() == null) {
+                    Toast.makeText(getActivity().getBaseContext(), "请先登录", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                } else startActivity(new Intent(getActivity(), OrderActivity.class));}
         };
         mNewOrderButton.setOnClickListener(mLisNewOrder);
         return view;
@@ -102,9 +107,15 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                                         HashMap<String, Object> map = new HashMap<>();
                                         map.put("OrderName", order.getAlias());
                                         map.put("OrderDate", (order.dateToString()));
-                                        map.put("OrderStatus", order.getStatus()==0? "订单已完成":"订单未完成");
+                                        switch (order.getStatus()){
+                                            case 0 : map.put("OrderStatus",  "订单未完成"); break;
+                                            case 1 : map.put("OrderStatus",  "订单已处理，请等待回收");break;
+                                            case 2 : map.put("OrderStatus",  "订单已完成"); break;
+                                            case -1 : map.put("OrderStatus", "订单已取消"); break;
+                                            default : map.put("OrderStatus", "未知状态"); break;
+                                        }
                                         map.put("OrderId", "#" + order.getId());
-                                        map.put("OrderImage", order.getStatus()==0? R.mipmap.order_icon_complete : R.mipmap.order_icon_incomplete);
+                                        map.put("OrderImage", order.getStatus()==0? R.mipmap.order_icon_incomplete : R.mipmap.order_icon_complete);
                                         newdata.add(map);
                                     }
                                     data.clear();

@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/9/2.
+  ~ Created by Pixel Frame on 2017/11/1.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -34,7 +34,7 @@
     <string name="minus">-</string>
     <string name="About">「Yi回收」应用程序\n for Android 4.4+\n\n由东南大学信息科学与工程学院制作\n\n\n\n电子邮件：pm421@live.com</string>
     <string name="button_neworder">新的回收订单</string>
-    <string name="button_scan">扫描二维码</string>
+    <string name="button_scan">扫一扫\n打开回收柜</string>
     <string name="Light">闪 光 灯</string>
     <string name="confirm_pwd">确认密码</string>
     <string name="formatuserlv">Lv %1$d</string>
@@ -44,4 +44,13 @@
     <string name="itemname">物品名</string>
     <string name="itemprice">回收价</string>
     <string name="itemdesc">物品描述\n物品描述\n物品描述\n物品描述</string>
+    <string name="preoreder">预约回收</string>
+    <string name="Item_Type">回收品类别</string>
+    <string name="Type_0">报纸</string>
+    <string name="Type_1">衣物</string>
+    <string name="Type_2">电子产品</string>
+    <string name="Type_3">金属物品</string>
+    <string name="Type_4">家用电器</string>
+    <string name="Type_5">其他</string>
+    <string name="Num">数量</string>
 </resources>

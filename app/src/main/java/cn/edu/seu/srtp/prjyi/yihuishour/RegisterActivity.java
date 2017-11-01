@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/26.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -47,13 +47,21 @@ public class RegisterActivity extends AppCompatActivity {
         lisRegister = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                String username = editUsername.getText().toString().trim();
+                String password = editPassword.getText().toString().trim();
+                if(username.contains("--")|
+                        password.contains("--")|
+                        username.matches(".*\\s+.*")) {
+                    Toast.makeText(RegisterActivity.this, "用户名或密码非法", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                register(username, password);
             }
         };
         registerButton.setOnClickListener(lisRegister);
     }
 
-    private void register() {
+    private void register(final String username, final String password) {
         RequestQueue requestQueue = newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.RegisterURL,
                 new Response.Listener<String>() {
@@ -73,10 +81,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
-                params.put("register","true");
-                params.put("username",editUsername.getText().toString().trim());
-                params.put("password",editPassword.getText().toString().trim());
-                params.put("con_password",editConfirmPassword.getText().toString().trim());
+                params.put("register", "true");
+                params.put("username", username);
+                params.put("password", password);
+                params.put("con_password", editConfirmPassword.getText().toString().trim());
                 return params;
             }
         };

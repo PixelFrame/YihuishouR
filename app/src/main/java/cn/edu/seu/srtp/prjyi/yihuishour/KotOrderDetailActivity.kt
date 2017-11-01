@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/9/23.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -17,9 +17,10 @@ import com.nostra13.universalimageloader.core.ImageLoader
 
 class KotOrderDetailActivity : AppCompatActivity() {
 
-    private val itemDetailImage: ImageView = findViewById(R.id.id_iv_itemDetImage) as ImageView
+    private val itemDetailImage: ImageView = findViewById(R.id.id_iv_itemDetImage)
     private val imageLoader: ImageLoader = ImageLoader.getInstance()
-    private val options: DisplayImageOptions = DisplayImageOptions.Builder().showStubImage(R.mipmap.image_loading)
+    private val options: DisplayImageOptions = DisplayImageOptions.Builder()
+            .showStubImage(R.mipmap.image_loading)
             .showImageForEmptyUri(R.mipmap.image_loading)
             .showImageOnFail(R.mipmap.image_loading)
             .cacheInMemory(true)

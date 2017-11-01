@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/1.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -29,6 +29,7 @@ public class Order {
     public void setStatus(int i) { this.status = i; }
     public void setAttrib(int i) { this.attrib = i; }
     public void newItem() { items.add(new Item()); }
+    public void newItem(Item it) { items.add(it); }
     public void setItemId(int i) { items.get(items.size() - 1).setId(i); }
     public void setItemName(String text) { items.get(items.size() - 1).setName(text); }
     public void setItemNum(int i) { items.get(items.size() - 1).setNum(i);    }

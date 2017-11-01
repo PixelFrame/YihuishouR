@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/9.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -73,7 +73,7 @@ public class SelectAvatarActivity extends AppCompatActivity implements View.OnCl
                 @Override
                 protected Map<String,String> getParams(){
                     Map<String,String> params = new HashMap<>();
-                    params.put("id", Integer.toString(globalData.getUser().getId()));
+                    params.put("uid", Integer.toString(globalData.getUser().getId()));
                     params.put("aid", Integer.toString(avatarID));
                     return params;
                 }

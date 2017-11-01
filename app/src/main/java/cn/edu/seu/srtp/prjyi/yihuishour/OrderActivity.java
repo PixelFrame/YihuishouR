@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/10/17.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -43,18 +43,22 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-        Button mScan = (Button) findViewById(R.id.id_button_scan);
+        Button mScan = findViewById(R.id.id_button_scan);
+        Button mNewPre = findViewById(R.id.id_button_newpre);
         View.OnClickListener mLisScan = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GlobalData globalData = (GlobalData) getApplication();
-                if (globalData.getUser() == null) {
-                    Toast.makeText(getBaseContext(), "请先登录", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getBaseContext(),LoginActivity.class));
-                } else customScan();
+                customScan();
+            }
+        };
+        View.OnClickListener mLisNewPre = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), PreOrderActivity.class));
             }
         };
         mScan.setOnClickListener(mLisScan);
+        mNewPre.setOnClickListener(mLisNewPre);
     }
 
     public void customScan(){

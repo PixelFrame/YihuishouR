@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Pixel Frame on 2017/10/14.
+  ~ Created by Pixel Frame on 2017/11/1.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,11 +16,25 @@
     <Button
         android:id="@+id/id_button_scan"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:background="@color/colorPrimaryDark"
         android:text="@string/button_scan"
         android:textColor="@color/white"
         android:textSize="36sp" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/id_button_newpre"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/preoreder"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
+
+</RelativeLayout>

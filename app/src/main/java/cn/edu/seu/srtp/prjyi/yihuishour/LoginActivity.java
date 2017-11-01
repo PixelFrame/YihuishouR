@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/26.
+ * Created by Pixel Frame on 2017/11/1.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -8,7 +8,6 @@
 package cn.edu.seu.srtp.prjyi.yihuishour;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
@@ -52,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerButton.setOnClickListener(this);
     }
 
-    private void login() {
+    private void login(final String username, final String password) {
         RequestQueue requestQueue = newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.LoginURL,
                 new Response.Listener<String>() {
@@ -82,8 +80,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
                 params.put("login", "true");
-                params.put("username",editUsername.getText().toString().trim());
-                params.put("password",editPassword.getText().toString().trim());
+                params.put("username",username);
+                params.put("password",password);
                 return params;
             }
         };
@@ -93,7 +91,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.id_button_login){
-            login();
+            String username = editUsername.getText().toString().trim();
+            String password = editPassword.getText().toString().trim();
+            if(username.contains("--")|
+                    password.contains("--")|
+                    username.matches(".*\\s+.*")) {
+                Toast.makeText(LoginActivity.this, "用户名或密码非法", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            login(username, password);
         } else if(v.getId() == R.id.id_button_logon){
             startActivity(new Intent(this, RegisterActivity.class));
         }
