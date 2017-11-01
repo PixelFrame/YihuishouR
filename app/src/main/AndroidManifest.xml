@@ -31,9 +31,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-    <meta-data
-        android:name="com.amap.api.v2.apikey"
-        android:value="abd537da4ab53f1f1b5775a6f91969cb" />
+
 
     <application
         android:name=".util.GlobalData"
@@ -50,8 +48,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity" />
-        <activity
+        <activity android:name=".MapActivity">
+            <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="abd537da4ab53f1f1b5775a6f91969cb" />
+        </activity>
+        <activitWy
             android:name=".OrderActivity"
             android:label="新建订单"
             android:theme="@style/AppTheme" />
