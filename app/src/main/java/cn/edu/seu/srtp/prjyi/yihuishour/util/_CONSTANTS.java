@@ -21,8 +21,9 @@ final public class _CONSTANTS {
     public static final String BannerImgURL = ServerURL + "img/Banner";
     public static final String OrderURL = ServerURL + "php/new_order.php";
     public static final String CheckOrderURL = ServerURL + "php/check_order.php";
-    public static final String EditOrderURL = ServerURL + "php/edit_order";
-    public static final String GetOrderURL = ServerURL + "php/get_order";
+    public static final String EditOrderURL = ServerURL + "php/edit_order.php";
+    public static final String GetOrderURL = ServerURL + "php/get_order.php";
+    public static final String ChkNewURL = ServerURL + "php/is_new_order.php";
     public static final int LEVEL_ADMIN = 666;
     public static final int LEVEL_SERV = 100;
 }

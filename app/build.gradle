@@ -19,6 +19,15 @@ android {
         versionName '1.2'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         versionNameSuffix 'PreRelease'
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+        manifestPlaceholders = [
+                XG_ACCESS_ID : "2100270201",
+                XG_ACCESS_KEY : "AL38FGY8I45R",
+        ]
+
+
     }
     buildTypes {
         release {
@@ -47,6 +56,10 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'com.tencent.xinge:xinge:3.1.81-alpha'
+    compile 'com.tencent.wup:wup:1.0.0.E-alpha'
+    compile 'com.tencent.mid:mid:3.72.4-alpha'
 }
 repositories {
     mavenCentral()

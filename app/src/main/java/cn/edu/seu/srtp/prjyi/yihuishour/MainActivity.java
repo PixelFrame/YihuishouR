@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/5.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -7,6 +7,9 @@
 
 package cn.edu.seu.srtp.prjyi.yihuishour;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -15,9 +18,22 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
+import cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS;
+
+import static cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS.LEVEL_ADMIN;
+import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -47,6 +63,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initViews();//初始化控件
         initEvents();//初始化事件
         initDatas();//初始化数据
+        checkNew();
     }
 
     @Override
@@ -184,5 +201,42 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     public void onResume(){
         super.onResume();
+        checkNew();
+    }
+
+    private void checkNew(){
+        GlobalData globalData = (GlobalData) getApplication();
+        if (globalData.getUser().getLevel()/1000 != LEVEL_ADMIN) return;
+        RequestQueue requestQueue = newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.ChkNewURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("TRUE")) {
+                            sendNotify();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+        requestQueue.add(stringRequest);
+    }
+
+    private void sendNotify(){
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification.Builder builder = new Notification.Builder(this)
+                //设置小图标
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                //设置通知标题
+                .setContentTitle("Yi回收")
+                //设置通知内容
+                .setContentText("新的回收订单");
+        //设置通知时间，默认为系统发出通知的时间，通常不用设置
+        //.setWhen(System.currentTimeMillis());
+        //通过builder.build()方法生成Notification对象,并发送通知,id=1
+        manager.notify(1, builder.build());
     }
 }
