@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/9/2.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -76,6 +76,7 @@ public class AmapMapFragment extends android.support.v4.app.Fragment {
                     Intent it = new Intent(getActivity(), MapActivity.class);
                     it.putExtra("Latitude", locationPoints.get(position).getLatLng().latitude);
                     it.putExtra("Longitude", locationPoints.get(position).getLatLng().longitude);
+                    it.putExtra("Description", locationPoints.get(position).getPoiDesc());
                     startActivity(it);
                 } else {
                     internetRequest();

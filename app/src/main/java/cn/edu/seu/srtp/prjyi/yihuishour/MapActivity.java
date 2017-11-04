@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/1.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -71,12 +71,11 @@ public class MapActivity extends AppCompatActivity implements LocationSource,
         defaultLatLng = new LatLng(lat, lon);
 
         markerOption.position(defaultLatLng);
-        markerOption.title("FAKE_RECYCLE_POINT").snippet("此处为测试用伪标记点");
+        markerOption.title("RECYCLE_POINT").snippet(it.getStringExtra("Description"));
         markerOption.draggable(false);//设置Marker可拖动
         // 将Marker设置为贴地显示，可以双指下拉地图查看效果
         markerOption.setFlat(false);//设置marker平贴地图效果
         aMap.addMarker(markerOption);
-        aMap.moveCamera(mCameraReset);
     }
 
     @Override

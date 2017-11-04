@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/9/2.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -17,7 +17,6 @@ import com.android.volley.toolbox.HttpHeaderParser;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;

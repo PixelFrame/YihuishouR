@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/1.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -22,14 +22,20 @@ public class Order {
     private long date = 2017;
     private int status;
     private int attrib;
+    private String location;
 
     public void setId(int i) { this.id = i; }
     public void setAlias(String text) { this.alias = text; }
     public void setDate(long i) { this.date = i; }
     public void setStatus(int i) { this.status = i; }
     public void setAttrib(int i) { this.attrib = i; }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public void newItem() { items.add(new Item()); }
     public void newItem(Item it) { items.add(it); }
+
     public void setItemId(int i) { items.get(items.size() - 1).setId(i); }
     public void setItemName(String text) { items.get(items.size() - 1).setName(text); }
     public void setItemNum(int i) { items.get(items.size() - 1).setNum(i);    }
@@ -40,6 +46,7 @@ public class Order {
     public String getAlias() { return alias; }
     public List<Item> getItems() { return items; }
     public long getDate() { return date; }
+    public String getLocation() {return location;}
     public String dateToString() {
         String strDate;
         long DATE = date;

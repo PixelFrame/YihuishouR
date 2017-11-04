@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/1.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -83,6 +83,7 @@ class PreOrderActivity : AppCompatActivity() {
 
     private fun createOrder(): Order {
         val EtNum : EditText = findViewById(R.id.id_edit_num)
+        val EtLoc : EditText = findViewById(R.id.id_edit_location)
         val item = Item()
         item.num = Integer.valueOf(EtNum.text.toString())
         item.catagory = ItemCata
@@ -94,6 +95,7 @@ class PreOrderActivity : AppCompatActivity() {
         order.alias = "预约订单"
         order.attrib = 1
         order.date = Integer.parseInt(SimpleDateFormat("yyMMddhhmm", Locale.CHINESE).format(Date())).toLong()
+        order.location = EtLoc.toString()
         return order
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Pixel Frame on 2017/11/1.
+  ~ Created by Pixel Frame on 2017/11/4.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -100,16 +100,33 @@
             android:ems="10"
             android:inputType="number" />
 
-        <Button
-            android:id="@+id/id_button_pre_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@color/colorPrimary"
-            android:text="@string/button_confirm"
-            android:textColor="@color/white" />
-
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_preord_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="51dp"
+        android:text="@string/Location"
+        android:textSize="36sp" />
+
+    <EditText
+        android:id="@+id/id_edit_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/id_button_pre_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_confirm"
+        android:textColor="@color/white" />
 
 </LinearLayout>

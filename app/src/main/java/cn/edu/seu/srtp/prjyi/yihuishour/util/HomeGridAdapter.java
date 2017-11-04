@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/9.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -52,7 +52,7 @@ public class HomeGridAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return this.img_text.length;
+        return img_text.length;
     }
 
     public Object getItem(int position) {
@@ -65,13 +65,12 @@ public class HomeGridAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {
-            convertView = LayoutInflater.from(this.mContext).inflate(R.layout.grid_item, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item, parent, false);
         }
-
         TextView tv = BaseViewHolder.get(convertView, R.id.grid_tv_item);
         ImageView iv = BaseViewHolder.get(convertView, R.id.grid_iv_item);
         iv.setBackgroundResource(this.imgs[position]);
-        tv.setText(this.img_text[position]);
+        tv.setText(img_text[position]);
         return convertView;
     }
 }

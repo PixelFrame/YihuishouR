@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/1.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -22,6 +22,11 @@ public class User {
     private int level = 0;
     private String avatar = null;
     public User(){}
+    public User(int id, String name, int level){
+        this.id = id;
+        this.name = name;
+        this.level = level;
+    }
 
     public void setName(String str) { name = str; }
     public void setId(int i) { id = i; }

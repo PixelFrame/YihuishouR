@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/1.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -35,6 +36,8 @@ import cn.edu.seu.srtp.prjyi.yihuishour.util.Order;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.XmlParser;
 import cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS;
 
+import static cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS.LEVEL_ADMIN;
+
 /**
  * Created by pm421 on 7/15/2017.
  * 订单页
@@ -48,12 +51,14 @@ public class OrderFragment extends android.support.v4.app.Fragment {
     List<Order> orders;
     SimpleAdapter listAdapter;
     List<HashMap<String, Object>> data;
+    AdapterView.OnItemClickListener lisItemClick;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.order_tab, container, false);
         initListView(view);
         internetRequest();
+        GlobalData globalData = (GlobalData) getActivity().getApplication();
         mNewOrderButton = (Button) view.findViewById(R.id.id_button_neworder);
         mLisNewOrder = new View.OnClickListener() {
             @Override
@@ -64,6 +69,7 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 } else startActivity(new Intent(getActivity(), OrderActivity.class));}
         };
+        if (globalData.getUser().getLevel()/1000 == LEVEL_ADMIN) mNewOrderButton.setVisibility(View.INVISIBLE);
         mNewOrderButton.setOnClickListener(mLisNewOrder);
         return view;
     }
@@ -85,7 +91,27 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                 R.layout.orlist_item,
                 new String[] {"OrderName", "OrderDate", "OrderStatus", "OrderId", "OrderImage"},
                 new int[] {R.id.id_tv_order, R.id.id_tv_orderdate, R.id.id_tv_orderstatus, R.id.id_tv_orderid, R.id.id_iv_order});
+        lisItemClick = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                GlobalData globalData = (GlobalData)getActivity().getApplication();
+                ListView listView = (ListView)parent;
+                HashMap<String, String> map = (HashMap<String, String>) listView.getItemAtPosition(position);
+                if(globalData.getUser() != null) {
+                    if (globalData.getUser().getLevel() / 1000 == 666) {
+                        Intent it = new Intent(getActivity().getBaseContext(), ProcessOrderActivity.class);
+                        it.putExtra("oid", map.get("OrderId"));
+                        startActivity(it);
+                    } else {
+                        Intent it = new Intent(getActivity().getBaseContext(), CheckOrderActivity.class);
+                        it.putExtra("oid", map.get("OrderId"));
+                        startActivity(it);
+                    }
+                }
+            }
+        };
         mListView.setAdapter(listAdapter);
+        mListView.setOnItemClickListener(lisItemClick);
     }
 
     private void internetRequest() {
@@ -96,7 +122,7 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals("Error")) {
+                        if(response.equals("NULL")) {
                             Toast.makeText(getActivity(), response, Toast.LENGTH_LONG).show();
                         } else {
                             try {
@@ -137,7 +163,13 @@ public class OrderFragment extends android.support.v4.app.Fragment {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
-                params.put("uid", Integer.toString(globalData.getUser().getId()));
+                if(globalData.getUser() != null) {
+                    if (globalData.getUser().getLevel() / 1000 == LEVEL_ADMIN) {
+                        params.put("uid", String.valueOf(-100000));
+                    } else {
+                        params.put("uid", Integer.toString(globalData.getUser().getId()));
+                    }
+                }
                 return params;
             }
         };

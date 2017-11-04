@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/10/17.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -70,6 +70,9 @@ public class XmlParser {
                     } else if(parser.getName().equals("attrib")) {
                         eventType = parser.next();
                         order.setAttrib(Integer.parseInt(parser.getText()));
+                    }   else if(parser.getName().equals("location")) {
+                        eventType = parser.next();
+                        order.setLocation(parser.getText());
                     }
                     break;
                 case XmlPullParser.END_TAG:
@@ -137,6 +140,10 @@ public class XmlParser {
             serializer.startTag("","attrib");
             serializer.text(order.getAttrib() + "");
             serializer.endTag("","attrib");
+
+            serializer.startTag("","location");
+            serializer.text(order.getLocation() + "");
+            serializer.endTag("","location");
 
             serializer.endTag("","order");
         }

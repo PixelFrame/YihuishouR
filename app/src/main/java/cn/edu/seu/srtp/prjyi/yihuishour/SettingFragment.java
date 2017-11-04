@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/8/9.
+ * Created by Pixel Frame on 2017/11/4.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -34,6 +34,8 @@ import cn.edu.seu.srtp.prjyi.yihuishour.settingActivities.AboutActivity;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.GlobalData;
 import cn.edu.seu.srtp.prjyi.yihuishour.util.User;
 
+import static cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS.LEVEL_ADMIN;
+import static cn.edu.seu.srtp.prjyi.yihuishour.util._CONSTANTS.LEVEL_SERV;
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
 /**
@@ -91,9 +93,10 @@ public class SettingFragment extends android.support.v4.app.Fragment {
             userLevel.setText(String.format(getResources().getString(R.string.formatuserlv),globalData.getUser().getLevel() % 1000 + 1));
 
             String info;
-
-            if (globalData.getUser().getLevel()/1000 == 666) {
+            if (globalData.getUser().getLevel()/1000 == LEVEL_ADMIN) {
                 info = "系统管理员";
+            } else if (globalData.getUser().getLevel()/1000 == LEVEL_SERV){
+                info = "服务提供商";
             } else if (globalData.getUser().getLevel()/1000 > 0) {
                 info = "VIP" + globalData.getUser().getLevel()/1000 + "用户";
             } else { info = "普通用户"; }

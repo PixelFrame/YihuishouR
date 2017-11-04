@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Created by Pixel Frame on 2017/11/1.
+  ~ Created by Pixel Frame on 2017/11/4.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -31,8 +31,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
-
-
     <application
         android:name=".util.GlobalData"
         android:allowBackup="true"
@@ -41,19 +39,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="abd537da4ab53f1f1b5775a6f91969cb" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapActivity">
-            <meta-data
-                android:name="com.amap.api.v2.apikey"
-                android:value="abd537da4ab53f1f1b5775a6f91969cb" />
-        </activity>
-        <activitWy
+
+        <activity android:name=".MapActivity" />
+        <activity
             android:name=".OrderActivity"
             android:label="新建订单"
             android:theme="@style/AppTheme" />
@@ -68,7 +68,18 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".ItemActivity" />
         <activity android:name=".KotOrderDetailActivity" />
-        <activity android:name=".PreOrderActivity" />
+        <activity
+            android:name=".PreOrderActivity"
+            android:label="建立预约回收订单"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ProcessOrderActivity"
+            android:label="订单详情"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CheckOrderActivity"
+            android:label="订单详情"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

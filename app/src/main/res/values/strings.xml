@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/11/1.
+  ~ Created by Pixel Frame on 2017/11/4.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -53,4 +53,8 @@
     <string name="Type_4">家用电器</string>
     <string name="Type_5">其他</string>
     <string name="Num">数量</string>
+    <string name="Location">地址</string>
+    <string name="Item">物品</string>
+    <string name="Accept">接单</string>
+    <string name="Accquring">获取中...</string>
 </resources>

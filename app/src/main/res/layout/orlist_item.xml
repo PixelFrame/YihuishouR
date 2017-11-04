@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Pixel Frame on 2017/7/28.
+  ~ Created by Pixel Frame on 2017/11/4.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -12,7 +12,8 @@
     android:layout_height="90dp"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/bk_grey">
+    android:background="@color/bk_grey"
+    android:descendantFocusability="blocksDescendants">
 
     <RelativeLayout
         android:layout_width="match_parent"
