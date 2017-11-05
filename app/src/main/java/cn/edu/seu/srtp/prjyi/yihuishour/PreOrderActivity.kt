@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -95,7 +95,7 @@ class PreOrderActivity : AppCompatActivity() {
         order.alias = "预约订单"
         order.attrib = 1
         order.date = Integer.parseInt(SimpleDateFormat("yyMMddhhmm", Locale.CHINESE).format(Date())).toLong()
-        order.location = EtLoc.toString()
+        order.location = EtLoc.text.toString()
         return order
     }
 }
