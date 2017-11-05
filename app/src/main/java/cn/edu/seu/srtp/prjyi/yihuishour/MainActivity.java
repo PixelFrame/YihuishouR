@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -63,7 +63,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         initViews();//初始化控件
         initEvents();//初始化事件
         initDatas();//初始化数据
-        checkNew();
     }
 
     @Override
@@ -206,6 +205,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private void checkNew(){
         GlobalData globalData = (GlobalData) getApplication();
+        if (globalData.getUser() == null) return;
         if (globalData.getUser().getLevel()/1000 != LEVEL_ADMIN) return;
         RequestQueue requestQueue = newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.ChkNewURL,

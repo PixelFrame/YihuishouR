@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -49,6 +49,7 @@ public class ProcessOrderActivity extends AppCompatActivity {
         tvOid = findViewById(R.id.id_tv_po_oid);
         tvDate = findViewById(R.id.id_tv_po_date);
         tvItem = findViewById(R.id.id_tv_po_item);
+        tvLocation = findViewById(R.id.id_tv_po_location);
         btnAccept = findViewById(R.id.id_button_accept);
         requestQueue = newRequestQueue(this);
         init();
@@ -84,6 +85,7 @@ public class ProcessOrderActivity extends AppCompatActivity {
                             try {
                                 order = XmlParser.parse_order(response).get(0);
                                 updateView();
+                                btnAccept.setOnClickListener(lisAccept);
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 Toast.makeText(ProcessOrderActivity.this, "系统错误", Toast.LENGTH_LONG).show();
@@ -109,26 +111,44 @@ public class ProcessOrderActivity extends AppCompatActivity {
     private void updateView() {
         String ItemCat = null;
         String BtnText = null;
-        switch (order.getItems().get(0).getCatagory()) {
-            case 0: ItemCat = getString(R.string.Type_0); break;
-            case 1: ItemCat = getString(R.string.Type_1); break;
-            case 2: ItemCat = getString(R.string.Type_2); break;
-            case 3: ItemCat = getString(R.string.Type_3); break;
-            case 4: ItemCat = getString(R.string.Type_4); break;
-            case 5: ItemCat = getString(R.string.Type_5); break;
+        if (order.getItems().isEmpty()) tvItem.setText("无");
+        else {
+            switch (order.getItems().get(0).getCatagory()) {
+                case 0:
+                    ItemCat = getString(R.string.Type_0);
+                    break;
+                case 1:
+                    ItemCat = getString(R.string.Type_1);
+                    break;
+                case 2:
+                    ItemCat = getString(R.string.Type_2);
+                    break;
+                case 3:
+                    ItemCat = getString(R.string.Type_3);
+                    break;
+                case 4:
+                    ItemCat = getString(R.string.Type_4);
+                    break;
+                case 5:
+                    ItemCat = getString(R.string.Type_5);
+                    break;
+            }
+            tvItem.setText(String.format("物品类别: %s\n物品数量: %s",
+                    ItemCat,
+                    order.getItems().get(0).getNum()));
         }
-
         switch (order.getStatus()) {
             case -1: BtnText = "恢复"; break;
             case 0: BtnText = "接单"; break;
             case 1: BtnText = "完成"; break;
             case 2: BtnText = "取消"; break;
         }
-        tvItem.setText(String.format("物品类别: %s\n物品数量: %s",
-                ItemCat,
-                order.getItems().get(0).getNum()));
         tvDate.setText(order.dateToString());
-        tvLocation.setText(order.getLocation());
+        if(order.getLocation() == null) {
+            tvLocation.setText("无");
+        } else {
+            tvLocation.setText(order.getLocation());
+        }
         btnAccept.setText(BtnText);
     }
 
@@ -153,6 +173,7 @@ public class ProcessOrderActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
+                params.put("type", "0");
                 params.put("oid", String.valueOf(oid));
                 params.put("status", String.valueOf(stat + 1));
                 return params;

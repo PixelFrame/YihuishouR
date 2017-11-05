@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/5.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -69,7 +69,10 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 } else startActivity(new Intent(getActivity(), OrderActivity.class));}
         };
-        if (globalData.getUser().getLevel()/1000 == LEVEL_ADMIN) mNewOrderButton.setVisibility(View.INVISIBLE);
+        if (globalData.getUser() != null) {
+            if (globalData.getUser().getLevel() / 1000 == LEVEL_ADMIN)
+                mNewOrderButton.setVisibility(View.INVISIBLE);
+        }
         mNewOrderButton.setOnClickListener(mLisNewOrder);
         return view;
     }
@@ -100,11 +103,11 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                 if(globalData.getUser() != null) {
                     if (globalData.getUser().getLevel() / 1000 == 666) {
                         Intent it = new Intent(getActivity().getBaseContext(), ProcessOrderActivity.class);
-                        it.putExtra("oid", map.get("OrderId"));
+                        it.putExtra("oid", Integer.parseInt(map.get("OrderId").substring(1)));
                         startActivity(it);
                     } else {
                         Intent it = new Intent(getActivity().getBaseContext(), CheckOrderActivity.class);
-                        it.putExtra("oid", map.get("OrderId"));
+                        it.putExtra("oid", Integer.parseInt(map.get("OrderId").substring(1)));
                         startActivity(it);
                     }
                 }

@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/11/4.
+  ~ Created by Pixel Frame on 2017/11/5.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -57,4 +57,6 @@
     <string name="Item">物品</string>
     <string name="Accept">接单</string>
     <string name="Accquring">获取中...</string>
+    <string name="Edit">修改</string>
+    <string name="Cancel">取消订单</string>
 </resources>
