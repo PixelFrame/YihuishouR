@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/5.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -57,7 +57,7 @@ public class OrderFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.order_tab, container, false);
         initListView(view);
-        internetRequest();
+        getOrder();
         GlobalData globalData = (GlobalData) getActivity().getApplication();
         mNewOrderButton = (Button) view.findViewById(R.id.id_button_neworder);
         mLisNewOrder = new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class OrderFragment extends android.support.v4.app.Fragment {
                 ListView listView = (ListView)parent;
                 HashMap<String, String> map = (HashMap<String, String>) listView.getItemAtPosition(position);
                 if(globalData.getUser() != null) {
-                    if (globalData.getUser().getLevel() / 1000 == 666) {
+                    if (globalData.getUser().getLevel() / 1000 == LEVEL_ADMIN) {
                         Intent it = new Intent(getActivity().getBaseContext(), ProcessOrderActivity.class);
                         it.putExtra("oid", Integer.parseInt(map.get("OrderId").substring(1)));
                         startActivity(it);
@@ -117,7 +117,7 @@ public class OrderFragment extends android.support.v4.app.Fragment {
         mListView.setOnItemClickListener(lisItemClick);
     }
 
-    private void internetRequest() {
+    private void getOrder() {
         final GlobalData globalData = (GlobalData) getActivity().getApplication();
         if (globalData.getUser() == null) return;
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());

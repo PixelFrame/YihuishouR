@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -15,10 +15,10 @@ android {
         applicationId "cn.edu.seu.srtp.prjyi.yihuishour"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName '1.2'
+        versionCode 2
+        versionName '1.53'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionNameSuffix 'PreRelease'
+        versionNameSuffix ' Release 1711'
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }

@@ -1,5 +1,5 @@
 <!--
-  ~ Created by Pixel Frame on 2017/11/5.
+  ~ Created by Pixel Frame on 2017/11/12.
   ~ Copyright (c) 2017. All Rights Reserved.
   ~
   ~ To use contact by e-mail: pm421@live.com.
@@ -32,7 +32,8 @@
     <string name="price">价格： ￥450.00</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
-    <string name="About">「Yi回收」应用程序\n for Android 4.4+\n\n由东南大学信息科学与工程学院制作\n\n\n\n电子邮件：pm421@live.com</string>
+    <string name="About">「Yi回收」应用程序\n for Android 4.4+\n\n由东南大学信息科学与工程学院制作\n\n电子邮件：pm421@live.com</string>
+    <string name="Compile">版本 1.5 Release\n最后编译于 2017/11/11 21:10</string>
     <string name="button_neworder">新的回收订单</string>
     <string name="button_scan">扫一扫\n打开回收柜</string>
     <string name="Light">闪 光 灯</string>

@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/5.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -212,7 +212,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.equals("TRUE")) {
+                        if(response.trim().equals("TRUE")) {
                             sendNotify();
                         }
                     }

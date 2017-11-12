@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -22,6 +22,7 @@ final public class _CONSTANTS {
     public static final String OrderURL = ServerURL + "php/new_order.php";
     public static final String CheckOrderURL = ServerURL + "php/check_order.php";
     public static final String EditOrderURL = ServerURL + "php/edit_order.php";
+    public static final String EditOrderLocaURL = ServerURL + "php/edit_order_location.php";
     public static final String GetOrderURL = ServerURL + "php/get_order.php";
     public static final String ChkNewURL = ServerURL + "php/is_new_order.php";
     public static final int LEVEL_ADMIN = 666;

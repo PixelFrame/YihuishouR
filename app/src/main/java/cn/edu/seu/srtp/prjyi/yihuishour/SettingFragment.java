@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/4.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -152,7 +152,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
                if(position != 7) startActivity(new Intent(getActivity(),AboutActivity.class));
                else {
                    GlobalData globalData = (GlobalData) getActivity().getApplication();
-                   globalData.setUser(new User());
+                   globalData.setUser(null);
                    userButton.setVisibility(View.VISIBLE);
                    userAvatar.setImageResource(R.mipmap.setting_unpressed);
                }
@@ -167,6 +167,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
     }
     private void updateAvatar() {
         GlobalData globalData = (GlobalData) getActivity().getApplicationContext();
+        if(globalData.getUser().getAvatar() == null) return;
         RequestQueue requestQueue = newRequestQueue(getContext());
         ImageRequest imageRequest = new ImageRequest(globalData.getUser().getAvatar(),
                 new Response.Listener<Bitmap>() {
@@ -180,7 +181,7 @@ public class SettingFragment extends android.support.v4.app.Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        Toast.makeText(getContext(),"网络异常",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"获取头像失败",Toast.LENGTH_SHORT).show();
                     }
                 });
         requestQueue.add(imageRequest);

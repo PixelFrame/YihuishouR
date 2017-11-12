@@ -1,5 +1,5 @@
 /*
- * Created by Pixel Frame on 2017/11/5.
+ * Created by Pixel Frame on 2017/11/12.
  * Copyright (c) 2017. All Rights Reserved.
  *
  * To use contact by e-mail: pm421@live.com.
@@ -216,7 +216,7 @@ public class CheckOrderActivity extends AppCompatActivity {
     }
 
     private void sendEditLoca(final String newLoca) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.EditOrderURL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, _CONSTANTS.EditOrderLocaURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
